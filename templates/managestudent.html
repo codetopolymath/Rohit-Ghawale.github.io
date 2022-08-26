@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STUDENT</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  </head> 
+  
+  <h1>STUDENT</h1>
+
+  <table id="student" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>roll no</th>
+        <th>course ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+    <tr>{% for student in student %}
+    <th>{{ student[0] }}</th>  
+    <th>{{ student[1]+ ' ' + student[2] }}</th>
+    <th>{{ student[3] }}</th>
+    <th>{{ student[4] }}</th>
+        <th> <body>
+        <button><a href="/update/{{ student[0] }}">UPDATE<a></button>
+        <button><a href="/delete/{{ student[0] }}">DELETE</a></button>
+        </body></th>	
+
+  
+    </tr>{% endfor %} 
+    </tbody>
+    </table>
+  
+<div><button href="www.google.com">DELETED</button></div>
+    
+<table id="student" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>roll no</th>
+        <th>course ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>{% for dstudent in dstudent %}
+    <th>{{ dstudent[0] }}</th>  
+    <th>{{ dstudent[1]+ ' ' + dstudent[2] }}</th>
+    <th>{{ dstudent[3] }}</th>
+    <th>{{ dstudent[4] }}</th>
+    <th><a href="/readmit/{{ dstudent[0] }}">READMIT</a></th>
+    </tr>{% endfor %}</tbody>
+ 
+ 
+ 
+ 
+  <script>
+    $(document).ready(function () {
+      $('#student').DataTable({
+        columns: [
+          null,
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+    </script>
+
+  </body>
+</html>

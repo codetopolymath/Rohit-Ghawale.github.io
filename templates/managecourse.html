@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COURSE</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  </head> 
+  
+  <h1>COURSES</h1>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>YEAR</th>
+        <th>DURATION</th>
+        <th>STATUS</th>
+        <th>updated_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in course %}
+        <tr>
+          <td>{{ course[0] }}</td>
+          <td>{{ course[1] }}</td>
+          <td>{{ course[2] }}</td>
+          <td>{{ course[5] }}</td>
+          <th> <body>
+        <button><a href="/update/{{ course[0] }}">UPDATE<a></button>
+        <button><a href="/delete/{{ course[0] }}">DELETE</a></button>
+        </body></th>  
+        </tr>
+        
+      {% endfor %}
+    </tbody>
+  </table>
+
+<h2>UPDATE AND DELETE BUTTON WILL BE PROVIDED ON OTHER PAGE</h2>
+
+
+<div><button href="www.google.com">DELETED COURSE</button></div>   
+<table id="student" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>roll no</th>
+        <th>course ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>{% for dcourse in dcourse %}
+    <th>{{ dcourse[0] }}</th>  
+    <th>{{ dcourse[1]+ ' ' + dcourse[2] }}</th>
+    <th>{{ dcourse[3] }}</th>
+    <th>{{ dcourse[4] }}</th>
+    <th><a href="/retake/{{ dcourse[0] }}">RETAKE</a></th>
+    </tr>{% endfor %}</tbody>
+ 
+ 
+ 
+ 
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+    </script>
+
+  </body>
+</html>
